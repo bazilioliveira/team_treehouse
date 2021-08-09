@@ -16,16 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('authors', [AuthorController::class, 'index']);
-Route::get('authors/{author}', [AuthorController::class, 'show']);
-Route::put('authors/{author}', [AuthorController::class, 'update']);
-Route::patch('authors/{author}', [AuthorController::class, 'update']);
-Route::delete('authors/{author}', [AuthorController::class, 'destroy']);
-Route::post('authors', [AuthorController::class, 'store']);
+Route::apiResource('authors', AuthorController::class);
 
-Route::get('books', [BookController::class, 'index']);
-Route::get('books/{book}', [BookController::class, 'show']);
-Route::put('books/{book}', [BookController::class, 'update']);
-Route::patch('books/{book}', [BookController::class, 'update']);
-Route::delete('books/{book}', [BookController::class, 'destroy']);
-Route::post('books', [AuthorController::class, 'store']);
+Route::apiResource('books', BookController::class);

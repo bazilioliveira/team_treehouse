@@ -33,6 +33,10 @@ class AuthorController extends Controller
             'company' => 'required',
             'email' => 'required'
         ]);
+
+        if($validate->fails()) {
+            return response($validate->errors(), 400);
+        }
         return response(new AuthorResource(Author::create($validate->validate())), 201);
     }
 
@@ -62,6 +66,9 @@ class AuthorController extends Controller
             'company' => 'required',
             'email' => 'required'
         ]);
+        if($validate->fails()) {
+            return response($validate->errors(), 400);
+        }
         $author->update($validate->validate());
         return response(new AuthorResource($author), 201);
     }
